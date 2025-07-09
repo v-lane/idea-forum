@@ -1,0 +1,2 @@
+- Project: Idea Forum
+- Group members: Christina Hollands, Victoria Lane, Rie Futaki
