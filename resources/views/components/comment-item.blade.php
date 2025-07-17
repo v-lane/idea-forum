@@ -1,6 +1,6 @@
 <div class="border border-solid border-zinc-300 p-6 rounded-xl">
     <div class="flex flex-column items-center ">
-        <flux:avatar circle initials="EX" />
+        <flux:avatar circle initials="{{ auth()->user()->initials() }}" color="auto" color:seed="{{ auth()->user()->initials() }}"/>
         <flux:heading class="ps-2 text-pink-600">Username</flux:heading>
     </div>
     <flux:text class="mt-2 mb-4">
