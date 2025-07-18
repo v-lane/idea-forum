@@ -1,3 +1,3 @@
-<ul class="list-group p-6">
+<ul class="list-group px-6">
     {{ $slot }}
 </ul>

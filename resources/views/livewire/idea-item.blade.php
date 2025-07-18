@@ -1,4 +1,8 @@
-<li class="border border-solid p-6 border-pink-300 rounded-xl mx-4 mb-6">
+<li class="
+@if($border)
+border border-solid
+@endif
+p-6 border-pink-300 rounded-xl m-6 bg-white">
     <header class="flex justify-between">
         <div>
             <flux:heading size="lg">{{ $idea['title'] }}</flux:heading>
