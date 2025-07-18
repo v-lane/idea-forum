@@ -4,7 +4,7 @@
         @include('partials.head')
     </head>
     <body class="min-h-screen bg-white">
-        <flux:header container class="border-b border-zinc-200 bg-pink-200">
+        <flux:header container class="border-b border-zinc-100 bg-linear-to-r from-pink-300 via-pink-50 via-50% via-zinc-50 via-55% via-yellow-50 via-65% to-yellow-100">
 
             <a href="{{ route('dashboard') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0" wire:navigate>
                 <x-app-logo />

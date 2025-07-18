@@ -1,4 +1,4 @@
-<li class="border border-solid p-6 rounded-xl" style="margin:1.5rem 5rem; border-color: oklch(82.3% 0.12 346.018);">
+<li class="border border-solid p-6 border-pink-300 rounded-xl mx-4 mb-6">
     <header class="flex justify-between">
         <div>
             <flux:heading size="lg">{{ $idea['title'] }}</flux:heading>
