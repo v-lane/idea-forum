@@ -1,7 +1,10 @@
 <x-layouts.app :title="__('Dashboard')">
-    <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-       <div class="w-50"><x-button :text="'Create'" /></div>
-        <x-button :text="'Cancel'" :color="'zinc'" />
-        <livewire:comment-section/>
+    <div class="flex items-center justify-center w-full">
+        <main class="flex-row w-full lg:max-w-6xl">
+            <x-hero :text="'My Ideas'"/>
+            <div class="m-3 bg-blue-400">ADD: + Create a New Idea</div>
+            <livewire:idea-section :hasIdeaCount="'true'" />
+        </main>
     </div>
+
 </x-layouts.app>
