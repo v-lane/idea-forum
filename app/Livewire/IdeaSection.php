@@ -6,7 +6,11 @@ use Livewire\Component;
 
 class IdeaSection extends Component
 {
-        public $ideas = [
+    public $hasHeader = false;
+    public $hasIdeaCount = false;
+    public $ideaCount;
+
+    public $ideas = [
         [
             "ideaId" => 1,
             "username" => "Fred Johnson",
@@ -44,6 +48,12 @@ class IdeaSection extends Component
             "numComments" => 7
         ]
     ];
+
+    public function mount()
+    {
+        $this->ideaCount = count($this->ideas);
+    }
+
     public function render()
     {
         return view('livewire.idea-section');
