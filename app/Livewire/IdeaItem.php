@@ -8,6 +8,7 @@ class IdeaItem extends Component
 {
     public $idea;
     public $border;
+    public $singleIdea = false;
 
     public function render()
     {

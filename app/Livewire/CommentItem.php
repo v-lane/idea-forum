@@ -9,6 +9,7 @@ class CommentItem extends Component
     public $userId;
     public $username = "Fred Johnson";
     public $body = "This is hardcoded content in the controller. To be replaced by comment text. The header of this comment card is hardcoded with the initials of the use - update with initials of user that created comment.";
+    public $date = "January 15, 2025";
 
 
 

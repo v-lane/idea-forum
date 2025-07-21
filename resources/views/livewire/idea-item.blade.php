@@ -1,11 +1,15 @@
-<li class="
+<li class="list-none
 @if($border)
 border border-solid
 @endif
 p-6 border-pink-300 rounded-xl m-6 bg-white">
     <header class="flex justify-between">
         <div>
-            <flux:heading size="lg">{{ $idea['title'] }}</flux:heading>
+            @if($singleIdea)
+            <h1 class="text-4xl">{{ $idea['title'] }}</h1>
+            @else
+            <flux:heading size="lg" level="3">{{ $idea['title'] }}</flux:heading>
+            @endif
             <flux:text class="text-xs" variant="subtle">{{ $idea['username'] }} / {{ $idea['date'] }}</flux:text>
         </div>
         @if($idea['ideaId'] == 3)
