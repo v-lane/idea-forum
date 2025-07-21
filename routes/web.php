@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/{id}',function() {
+Route::get('/idea/{id}',function(string $id) {
     return view('idea');
 })->name('idea');
 
