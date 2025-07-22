@@ -10,6 +10,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/idea/{id}',function(string $id) {
+    return view('idea');
+})->name('idea');
+
 // 'Create' Page Routes
 Route::get('create', [IdeaForm::class, 'index']);
 Route::post('create', [IdeaForm::class, 'store']);
@@ -21,6 +25,7 @@ Route::post('create', [IdeaForm::class, 'store']);
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
