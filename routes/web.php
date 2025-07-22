@@ -3,11 +3,20 @@
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
+use App\View\Components\IdeaForm;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+// 'Create' Page Routes
+Route::get('create', [IdeaForm::class, 'index']);
+Route::post('create', [IdeaForm::class, 'store']);
+// 'Edit Page
+/*Route::get('/edit/{id}', function ($id) {
+}
+);*/
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
