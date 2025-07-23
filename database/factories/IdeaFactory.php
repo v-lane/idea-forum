@@ -20,8 +20,6 @@ class IdeaFactory extends Factory
             'user_id' => $this->faker->numberBetween(1, 11),
             'title' => $this->faker->sentence(),
             'text' => $this->faker->paragraph(5),
-            'num_comments' => $this->faker->numberBetween(0, 11),
-            'num_likes' => $this->faker->numberBetween(0, 11)
         ];
     }
 }
