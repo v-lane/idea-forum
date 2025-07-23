@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\IdeaController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
-use App\View\Components\IdeaForm;
+use App\Models\Idea;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,13 +15,15 @@ Route::get('/idea/{id}',function(string $id) {
     return view('idea');
 })->name('idea');
 
-// 'Create' Page Routes
-Route::get('create', [IdeaForm::class, 'index']);
-Route::post('create', [IdeaForm::class, 'store']);
-// 'Edit Page
-/*Route::get('/edit/{id}', function ($id) {
-}
-);*/
+
+Route::middleware(['auth'])->group(function () {
+    // 'Create' Page Routes
+    Route::get('/create', [IdeaController::class, 'indexCreate'])->name('idea.indexCreate');
+    Route::post('/create', [IdeaController::class, 'store'])->name('idea.store');
+    // 'Edit' Page Routes
+    Route::get('/edit/{id}', [IdeaController::class, 'indexEdit']);
+    //Route::post('/edit/{id}', [IdeaController::class, 'store'])->name('idea.store');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
