@@ -8,10 +8,10 @@
             <p class="text-red-600 pb-3">{{ $message }}</p>
         @enderror
 
-        <flux:input class="p-2 text-zinc-950 caret-pink-600" type="textarea" label="Text" />
+        <flux:textarea class="p-2 text-zinc-950 caret-pink-600" label="Text" />
         @error('text')
             <p class="text-red-600 pb-3">{{ $message }}</p>
         @enderror
     </div>
-    <flux:button variant="primary" color="pink" type="submit" class="hover:bg-pink-700">Create</flux:button>
+    <flux:button variant="primary" color="pink" type="submit" class="hover:bg-pink-700 m-3">Create</flux:button>
 </form>
