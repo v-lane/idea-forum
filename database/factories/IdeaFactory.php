@@ -17,6 +17,7 @@ class IdeaFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => $this->faker->numberBetween(1, 11),
             'title' => $this->faker->sentence(),
             'text' => $this->faker->paragraph(5),
             'num_comments' => $this->faker->numberBetween(0, 11),
