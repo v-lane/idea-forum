@@ -58,4 +58,20 @@ class User extends Authenticatable
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+
+    // Relationships:
+    // User -> Idea 1:M
+   public function ideas(){
+        return $this->hasMany(Idea::class);
+    }
+
+    // User -> Comment 1:M
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    // User -> Like 1:M
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
 }
