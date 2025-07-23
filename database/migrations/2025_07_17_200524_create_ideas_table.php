@@ -16,8 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('title');
             $table->string('text');
-            $table->integer('num_comments');
-            $table->integer('num_likes');
             $table->timestamps();
         });
     }

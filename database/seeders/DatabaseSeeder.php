@@ -29,9 +29,7 @@ class DatabaseSeeder extends Seeder
         Idea::factory()->create([
             'user_id' => 11,
             'title' => 'Test User Idea',
-            'text' => 'This idea is tied to the Test User. It should display as the authenticaded user\'s idea if logged in.',
-            'num_comments'=>5,
-            'num_likes'=>10
+            'text' => 'This idea is tied to the Test User. It should display as the authenticaded user\'s idea if logged in.'
         ]);
 
         Comment::factory(30)->create();
