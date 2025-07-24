@@ -1,3 +1,5 @@
+{{-- Delete --}}
+
 <x-layouts.app :title="__('Edit')">
     <div class="flex items-center justify-center w-full">
         <main class="max-w-6xl">
