@@ -15,6 +15,9 @@
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
                     @auth
+                    <a href="{{ route('login') }}" class="inline-block px-5 py-1.5 text-zinc-700 border border-transparent hover:border-zinc-400 hover:text-zinc-700 rounded-sm text-sm leading-normal">
+                        Dashboard
+                    </a>
                         <flux:dropdown position="top" align="end">
                             <flux:profile
                                 circle
