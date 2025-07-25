@@ -6,7 +6,7 @@ p-6 border-pink-300 rounded-xl m-6 bg-white">
     <header class="flex justify-between">
         <div>
             @if($singleIdea)
-            <h1 class="text-4xl">{{ $idea['title'] }}</h1>
+            <h1 class="text-4xl">{{ $idea['title']}}</h1>
             @else
             <flux:heading size="lg" level="3">{{ $idea['title'] }}</flux:heading>
             @endif
@@ -33,7 +33,8 @@ p-6 border-pink-300 rounded-xl m-6 bg-white">
         @endif
     </header>
     <flux:text class="mt-2 mb-4">
-        {{ $idea['body'] }}
+        {{ $idea['body']}}
+        <p>This is from Idea Item: {{ print_r($idea)}}</p>
     </flux:text>
     <footer class="flex">
         {{-- ADD LISTENER/EVENT TO HEART ICON -> TO LIKE POST --}}

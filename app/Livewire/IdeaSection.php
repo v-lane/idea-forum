@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Idea;
 use Livewire\Component;
 
 class IdeaSection extends Component
@@ -10,7 +11,9 @@ class IdeaSection extends Component
     public $hasIdeaCount = false;
     public $ideaCount;
 
-    public $ideas = [
+    public $ideas;
+    /*public $ideas=
+    [
         [
             "ideaId" => 1,
             "username" => "Fred Johnson",
@@ -47,10 +50,11 @@ class IdeaSection extends Component
             "numLikes" => 1463,
             "numComments" => 7
         ]
-    ];
+    ];*/
 
     public function mount()
     {
+        $this->ideas = Idea::all();
         $this->ideaCount = count($this->ideas);
     }
 

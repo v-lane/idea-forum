@@ -7,6 +7,7 @@ use Livewire\Component;
 class IdeaItem extends Component
 {
     public $idea;
+    public $text;
     public $border;
     public $singleIdea = false;
 

@@ -11,8 +11,10 @@
     <div class="flex justify-center items-center">
         <x-idea-list>
             @foreach($ideas as $idea)
-            <livewire:idea-item :key="$idea['ideaId']" :$idea :border='true' />
+            <livewire:idea-item :key="$idea->id.'-'.$idea->title" :$idea :border='true' />
+                <p>This is from Idea Section: {{ $idea}}</p>
             @endforeach
         </x-idea-list>
     </div>
 </div>
+
