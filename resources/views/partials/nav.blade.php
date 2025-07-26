@@ -63,7 +63,7 @@
                             href="{{ route('login') }}"
                             class="inline-block px-5 py-1.5 text-zinc-700 border border-transparent hover:border-zinc-400 hover:text-zinc-700 rounded-sm text-sm leading-normal"
                         >
-                            Log in
+                            Login
                         </a>
 
                         @if (Route::has('register'))
