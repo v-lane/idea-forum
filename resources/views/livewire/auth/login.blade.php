@@ -39,7 +39,7 @@
         <flux:checkbox wire:model="remember" :label="__('Remember me')" />
 
         <div class="flex items-center justify-end">
-            <flux:button variant="primary" color="pink" type="submit" class="w-full hover:bg-pink-700">{{ __('Log in') }}</flux:button>
+            <flux:button variant="primary" color="pink" type="submit" class="w-full hover:bg-pink-700" style="cursor:pointer">{{ __('Log in') }}</flux:button>
         </div>
     </form>
 
