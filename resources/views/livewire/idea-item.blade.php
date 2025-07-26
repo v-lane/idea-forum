@@ -1,4 +1,4 @@
-<li class="list-none
+<li wire:click="$dispatch('show', {id: {{ $idea['ideaId'] }}})" class="list-none
 @if($border)
 border border-solid
 @endif

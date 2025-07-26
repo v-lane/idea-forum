@@ -10,6 +10,7 @@ class IdeaItem extends Component
     public $border;
     public $singleIdea = false;
 
+
     public function render()
     {
         return view('livewire.idea-item');

@@ -2,7 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Models\Idea;
+use Livewire\Attributes\On;
 use Livewire\Component;
+
+use function Laravel\Prompts\clear;
 
 class IdeaSection extends Component
 {
@@ -48,6 +52,13 @@ class IdeaSection extends Component
             "numComments" => 7
         ]
     ];
+
+     #[On('show')]
+    public function show ($id)
+    {
+        // get single idea
+        return $this->redirect("idea/".$id);
+    }
 
     public function mount()
     {
