@@ -25,6 +25,12 @@ class IdeaItem extends Component
     public $border;
     public $singleIdea = false;
 
+    public function mount(){
+        if(!$this->singleIdea){
+            $this->ideaText = substr($this->ideaText, 0, 50) . '...';
+        }
+    }
+
     public function render()
     { 
         return view('livewire.idea-item');
