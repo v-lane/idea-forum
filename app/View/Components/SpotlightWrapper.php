@@ -17,8 +17,7 @@ class SpotlightWrapper extends Component
      */
     public function __construct()
     {
-        // currently hardcoded to take the first idea, not most liked
-        $this->idea = Idea::find(1);
+        $this->idea = Idea::withCount('likes')->orderBy('likes_count', 'desc')->first();
     }
     /**
      * Get the view / contents that represent the component.
