@@ -35,5 +35,4 @@ class IdeaController extends Controller
         
         return redirect('/dashboard');
     }
-        */
 }

@@ -12,7 +12,6 @@ class IdeaItem extends Component
     // Adding props individually...
     // May edit/remove once I figure out how to set up properly!
     public $ideaId;
-    public $idea;
     public $ideaTitle;
     public $ideaText;
     public $numLikes;
