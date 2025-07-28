@@ -3,7 +3,7 @@
 {{-- Variant other than primary will override color options --}}
 {{-- Wrap button component in div with fixed width to adjust size --}}
 
-<flux:button class="w-full"
+<flux:button class="w-full cursor-pointer"
 variant="{{ $variant }}"
 color="{{ $color }}"
 >

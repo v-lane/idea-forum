@@ -16,11 +16,11 @@
             </div>
 
             <div class="flex items-center justify-start">
-                <flux:button type="submit" variant="primary" color="pink" class="hover:bg-pink-700 font-bold py-2 px-4 rounded">
+                <flux:button type="submit" variant="primary" color="pink" class="hover:bg-pink-700 font-bold py-2 px-4 rounded cursor-pointer">
                     Create
                 </flux:button>
                 <flux:modal.close>
-                    <flux:button variant="ghost" class="ml-4">Cancel</flux:button>
+                    <flux:button variant="ghost" class="ml-4 cursor-pointer">Cancel</flux:button>
                 </flux:modal.close>
             </div>
         </form>

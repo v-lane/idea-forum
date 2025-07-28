@@ -2,10 +2,14 @@
 @if($border)
 border border-solid
 @endif
+@if(!$singleIdea)
+cursor-pointer
+@endif
 "
 @if(!$singleIdea)
 wire:click="toIdea"
 @endif
+
 >
     <header class="flex justify-between">
         <div>
@@ -26,10 +30,10 @@ wire:click="toIdea"
         {{-- ADD LINK/EVENT TO EDIT/DELETE --}}
         <div class="flex">
             <div>
-               <flux:icon.pencil-square class="text-zinc-700"/>
+               <flux:icon.pencil-square class="text-zinc-700 cursor-pointer"/>
             </div>
-            <div class="text-zinc-700">
-                <flux:icon.trash />
+            <div>
+                <flux:icon.trash class="text-zinc-700 cursor-pointer"/>
             </div>
         </div>
         @endif
