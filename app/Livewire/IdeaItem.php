@@ -27,7 +27,7 @@ class IdeaItem extends Component
 
     public function mount(){
         if(!$this->singleIdea){
-            $this->ideaText = substr($this->ideaText, 0, 50) . '...';
+            $this->ideaText = substr($this->ideaText, 0, 125) . '...';
         }
     }
 
