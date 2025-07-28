@@ -16,7 +16,7 @@ class IdeaSection extends Component
 
     public function mount()
     {
-        if(!Auth::check()){
+        if(!Auth::check() || $this->hasHeader){
             $this->ideas = Idea::orderBy('created_at', 'desc')->get();
             $this->ideaCount = count($this->ideas);
         }
