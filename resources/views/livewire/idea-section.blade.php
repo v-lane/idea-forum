@@ -14,7 +14,7 @@
             <livewire:idea-item :key="$idea['id']"
             :ideaId="$idea['id']" :ideaTitle="$idea['title']" :ideaText="$idea['text']"
             :numLikes="count($idea->likes)" :numComments="count($idea->comments)"
-            :username="$idea->user->name" :userId="$idea->user_id"
+            :username="$idea->user->username" :userId="$idea->user_id"
             :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
             :border='true' />
             @endforeach
