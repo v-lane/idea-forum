@@ -6,6 +6,8 @@ use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
+use function Laravel\Prompts\clear;
+
 class IdeaSection extends Component
 {
     public $hasHeader = false;
@@ -24,6 +26,11 @@ class IdeaSection extends Component
             $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
             $this->ideaCount = count($this->ideas);
         }
+    }
+
+    public function refresh () {
+        $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        $this->ideaCount = count($this->ideas);
     }
 
     public function render()

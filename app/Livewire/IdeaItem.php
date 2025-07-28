@@ -25,6 +25,10 @@ class IdeaItem extends Component
     public $border;
     public $singleIdea = false;
 
+    public function toIdea () {
+        $this->redirect("/idea/$this->ideaId");
+    }
+
     public function mount(){
         if(!$this->singleIdea){
             $this->ideaText = substr($this->ideaText, 0, 125) . '...';
@@ -32,7 +36,7 @@ class IdeaItem extends Component
     }
 
     public function render()
-    { 
+    {
         return view('livewire.idea-item');
     }
 }

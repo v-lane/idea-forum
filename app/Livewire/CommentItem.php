@@ -2,20 +2,21 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 
 class CommentItem extends Component
 {
     public $userId;
-    public $username = "Fred Johnson";
-    public $body = "This is hardcoded content in the controller. To be replaced by comment text. The header of this comment card is hardcoded with the initials of the use - update with initials of user that created comment.";
-    public $date = "January 15, 2025";
+    public $username;
+    public $body;
+    public $date;
 
 
 
     public function mount()
     {
-        $this->userId = random_int(1, 100);
+        $this->username = User::find($this->userId,'username')->username;
     }
 
     public function render()
