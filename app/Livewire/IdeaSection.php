@@ -28,6 +28,11 @@ class IdeaSection extends Component
         }
     }
 
+    public function refresh () {
+        $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        $this->ideaCount = count($this->ideas);
+    }
+
     public function render()
     {
         return view('livewire.idea-section');
