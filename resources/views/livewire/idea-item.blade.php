@@ -1,12 +1,16 @@
-<li wire:click="$dispatch('show', {id: {{ $idea['ideaId'] }}})" class="list-none
+<li  class="list-none p-6 border-pink-300 rounded-xl m-6 bg-white
 @if($border)
 border border-solid
 @endif
-p-6 border-pink-300 rounded-xl m-6 bg-white">
+"
+@if(!$singleIdea)
+wire:click="toIdea"
+@endif
+>
     <header class="flex justify-between">
         <div>
             @if($singleIdea)
-            <h1 class="text-4xl">{{ $ideaTitle }}</h1>
+            <h1 class="text-4xl pb-1">{{ $ideaTitle }}</h1>
             @else
             <flux:heading size="lg" level="3">{{ $ideaTitle }}</flux:heading>
             @endif
@@ -20,8 +24,6 @@ p-6 border-pink-300 rounded-xl m-6 bg-white">
         </div>
         @if($userId == Auth::id())
         {{-- ADD LINK/EVENT TO EDIT/DELETE --}}
-        {{-- DECIDE - SVG icons or flux icons --}}
-
         <div class="flex">
             <div>
                <flux:icon.pencil-square class="text-zinc-700"/>

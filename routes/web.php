@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IdeaController::class, 'index'])->name('home');
 
-Route::get('/idea/{id}',function(string $id) {
-    return view('idea');
-})->name('idea');
+Route::get('/idea/{id}', [IdeaController::class,'indexIdea'])->name('idea');
 
 
 Route::middleware(['auth'])->group(function () {
