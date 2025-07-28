@@ -8,7 +8,7 @@
     @if($hasIdeaCount)
         <p class="ml-14 mt-10 text-xl">{{ $ideaCount }} Ideas</p>
     @endif
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center w-full">
         <x-idea-list>
             @foreach($ideas as $idea)
             <livewire:idea-item :key="$idea['id']"

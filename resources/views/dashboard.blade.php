@@ -1,6 +1,6 @@
 <x-layouts.app :title="__('Dashboard')">
     <div class="flex items-center justify-center w-full">
-        <main class="lg:max-w-6xl">
+        <main class="lg:max-w-6xl w-full">
             <x-hero :text="'My Ideas'"/>
             <flux:modal.trigger name="idea-form">
                 <flux:button icon="plus" variant="ghost" class="m-3">Create a New Idea</flux:button>
