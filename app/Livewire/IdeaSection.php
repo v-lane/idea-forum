@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Idea;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class IdeaSection extends Component
@@ -15,8 +16,14 @@ class IdeaSection extends Component
 
     public function mount()
     {
-        $this->ideas = Idea::orderBy('created_at', 'desc')->get();
-        $this->ideaCount = count($this->ideas);
+        if(!Auth::check()){
+            $this->ideas = Idea::orderBy('created_at', 'desc')->get();
+            $this->ideaCount = count($this->ideas);
+        }
+        else{
+            $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+            $this->ideaCount = count($this->ideas);
+        }
     }
 
     public function render()

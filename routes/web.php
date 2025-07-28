@@ -7,10 +7,6 @@ use App\Livewire\Settings\Profile;
 use App\Models\Idea;
 use Illuminate\Support\Facades\Route;
 
-/*Route::get('/', [function () {
-    return view('welcome');
-}])->name('home'); */
-
 Route::get('/', [IdeaController::class, 'index'])->name('home');
 
 Route::get('/idea/{id}',function(string $id) {
