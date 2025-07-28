@@ -13,6 +13,11 @@ class IdeaForm extends Component
     public $title;
     public $text;
 
+    public $heading;
+    public $formName;
+    public $btnText;
+    
+
     // Save function
     public function save () {
         $this->validate([

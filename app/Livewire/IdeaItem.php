@@ -28,6 +28,11 @@ class IdeaItem extends Component
     public function toIdea () {
         $this->redirect("/idea/$this->ideaId");
     }
+    
+    public function refresh()
+    {
+        $this->dispatch('refresh');
+    }
 
     public function mount(){
         if(!$this->singleIdea){

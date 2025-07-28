@@ -1,8 +1,10 @@
 <div class="mt-4">
-    <flux:modal.trigger name="idea-form">
+    
+    <flux:modal.trigger name="idea-form-create">
         <flux:button icon="plus" variant="ghost" class="m-3 cursor-pointer">Create a New Idea</flux:button>
     </flux:modal.trigger>
-    <livewire:idea-form @saved="refresh" />
+    <livewire:idea-form @saved="refresh" :heading="'Create a New Idea'" :formName="'create'" :btnText="'Create'" />
+    
     @if($hasHeader)
         <header class="flex justify-between items-center mx-10 mt-8">
             <h2 class="text-center text-2xl">All Ideas</h2>
@@ -20,7 +22,8 @@
             :numLikes="count($idea->likes)" :numComments="count($idea->comments)"
             :username="$idea->user->username" :userId="$idea->user_id"
             :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
-            :border='true' />
+            :border='true'
+            @refresh="refresh" />
             @endforeach
         </x-idea-list>
     </div>
