@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Idea;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
