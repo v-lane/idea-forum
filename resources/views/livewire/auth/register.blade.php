@@ -49,7 +49,7 @@
         />
 
         <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
+            <flux:button variant="primary" color="pink" type="submit" class="w-full hover:bg-pink-700" style="cursor:pointer">
                 {{ __('Create account') }}
             </flux:button>
         </div>
