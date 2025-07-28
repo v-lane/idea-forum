@@ -1,6 +1,6 @@
 <x-layouts.app :title="__('Dashboard')">
     <div class="flex items-center justify-center w-full">
-        <main class="lg:max-w-6xl">
+        <main class="lg:max-w-6xl w-full">
             <livewire:idea-item
             :key="$idea['id']"
             :ideaId="$idea['id']" :ideaTitle="$idea['title']" :ideaText="$idea['text']"
@@ -11,8 +11,7 @@
             :border='true'
             :singleIdea='true'
             />
-
-            <livewire:comment-section />
+            <livewire:comment-section :comments="$idea->comments"/>
         </main>
     </div>
 

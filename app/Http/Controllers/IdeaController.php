@@ -24,7 +24,7 @@ class IdeaController extends Controller
     {
         if (isset($request['id']))
         {
-            return view('idea', ['idea' => Idea::find($request['id'])]);
+            return view('idea', ['idea' => Idea::findOrFail($request['id'])]);
         }
     }
 
