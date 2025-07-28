@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class IdeaController extends Controller
 {
-    /*
+    public function index(){
+        return view('welcome', ['ideas' => Idea::all()]);
+    }
+
     public function indexCreate () {
         return view('create');
     }
@@ -32,5 +35,4 @@ class IdeaController extends Controller
         
         return redirect('/dashboard');
     }
-        */
 }
