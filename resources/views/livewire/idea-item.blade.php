@@ -18,11 +18,11 @@ wire:click="toIdea"
             @else
             <flux:heading size="lg" level="3">{{ $ideaTitle }}</flux:heading>
             @endif
-            <flux:text class="text-xs" variant="subtle">{{ $username }}/
+            <flux:text class="text-xs" variant="subtle">{{ $username }} -
                 @if($createDate == $editDate)
-                {{ $createDate }}
+                {{ $createDate->format('F j, Y @ g:i a') }}
                 @else
-                 Edited at: {{ $editDate }}
+                 Edited at: {{ $editDate->format('F j, Y @ g:i a') }}
                 @endif
             </flux:text>
         </div>
