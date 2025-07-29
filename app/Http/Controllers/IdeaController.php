@@ -7,7 +7,14 @@ use Illuminate\Http\Request;
 
 class IdeaController extends Controller
 {
-    public function index(){
+    public function index(Request $request) {
+        if(isset($request['search'])) {
+            return view('welcome', ['ideas' =>
+                Idea::where('title', 'like', "%{$request['search']}%")
+                ->orWhere('text','like',"%{$request['search']}%")
+                ->get()
+            ]);
+        }
         return view('welcome', ['ideas' => Idea::all()]);
     }
 

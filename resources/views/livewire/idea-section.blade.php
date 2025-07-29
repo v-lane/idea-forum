@@ -6,7 +6,7 @@
     @if($hasHeader)
         <header class="flex justify-between items-center mx-10 mt-8">
             <h2 class="text-center text-2xl">All Ideas</h2>
-            <p class="bg-blue-400">[add search bar here]</p>
+            <livewire:search wire:model.live="search" />
         </header>
     @endif
     @if($hasIdeaCount)
