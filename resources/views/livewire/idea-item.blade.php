@@ -7,7 +7,7 @@ cursor-pointer
 @endif
 "
 @if(!$singleIdea)
-wire:click="toIdea"
+    wire:click.self="toIdea"
 @endif
 
 >
@@ -30,10 +30,16 @@ wire:click="toIdea"
         {{-- ADD LINK/EVENT TO EDIT/DELETE --}}
         <div class="flex">
             <div>
-               <flux:icon.pencil-square class="text-zinc-700 cursor-pointer"/>
+                <flux:modal.trigger name="idea-form-{{ $ideaId }}">
+                    <flux:icon.pencil-square class="text-zinc-700 cursor-pointer"/>
+                </flux:modal.trigger>
+                <livewire:idea-form @saved="refresh" :key="$ideaId" :id="$ideaId" :title="$ideaTitle" :text="$ideaText" :heading="'Edit Your Idea'" :formName="$ideaId" :btnText="'Save'"/>
+                
             </div>
             <div>
-                <flux:icon.trash class="text-zinc-700 cursor-pointer"/>
+                <flux:modal.trigger name="">
+                    <flux:icon.trash class="text-zinc-700 cursor-pointer"/>
+                </flux:modal.trigger>
             </div>
         </div>
         @endif
