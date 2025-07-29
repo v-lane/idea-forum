@@ -11,11 +11,17 @@
             <livewire:search wire:model.live="search"/>
         </header>
     @endif
-    @if($hasIdeaCount)
+    @if($hasIdeaCount && count($ideas) > 0)
         <p class="ml-14 mt-10 text-xl">{{ $ideaCount }} Ideas</p>
     @endif
     <div class="flex justify-center items-center w-full">
         <x-idea-list>
+            @if (!count($ideas))
+                <flux:separator class="my-6"/>
+                <flux:text>
+                    No ideas yet!
+                </flux:text>
+            @endif
             @foreach($ideas as $idea)
             <livewire:idea-item :key="$idea['id']"
             :ideaId="$idea['id']" :ideaTitle="$idea['title']" :ideaText="$idea['text']"
