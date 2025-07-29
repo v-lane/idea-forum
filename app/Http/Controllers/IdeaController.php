@@ -7,7 +7,14 @@ use Illuminate\Http\Request;
 
 class IdeaController extends Controller
 {
-    public function index(){
+    public function index(Request $request) {
+        if(isset($request['search'])) {
+            return view('welcome', ['ideas' =>
+                Idea::where('title', 'like', "%{$request['search']}%")
+                ->orWhere('text','like',"%{$request['search']}%")
+                ->get()
+            ]);
+        }
         return view('welcome', ['ideas' => Idea::all()]);
     }
 
@@ -24,7 +31,9 @@ class IdeaController extends Controller
     {
         if (isset($request['id']))
         {
-            return view('idea', ['idea' => Idea::findOrFail($request['id'])]);
+            $idea = Idea::findOrFail($request['id']);
+            $comments = $idea->comments()->orderBy('created_at', 'desc')->get();
+            return view('idea', ['idea' => $idea, 'comments' => $comments]);
         }
     }
 

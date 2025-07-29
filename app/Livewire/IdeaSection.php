@@ -13,6 +13,7 @@ class IdeaSection extends Component
     public $hasHeader = false;
     public $hasIdeaCount = false;
     public $ideaCount;
+    public $search = '';
 
     public $ideas;
 
@@ -31,6 +32,12 @@ class IdeaSection extends Component
     public function refresh () {
         $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
         $this->ideaCount = count($this->ideas);
+    }
+
+    public function updatedSearch () {
+    $this->ideas = Idea::where('title', 'like', "%{$this->search}%")
+        ->orWhere('text', 'like', "%{$this->search}%")
+        ->get();
     }
 
     public function render()
