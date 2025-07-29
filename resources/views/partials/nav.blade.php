@@ -6,10 +6,14 @@
 
             <flux:spacer />
 
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
+            <nav class="flex items-center justify-end gap-4">
+                <a href="{{ route('home') }}" class="inline-block px-2 py-1.5 text-zinc-700 border border-transparent hover:border-zinc-400 hover:text-zinc-700 rounded-sm text-sm leading-normal">
+                    Home
+                </a>
+                <flux:separator vertical class="my-2"/>
+                    @if (Route::has('login'))
                     @auth
-                    <a href="{{ route('login') }}" class="inline-block px-5 py-1.5 text-zinc-700 border border-transparent hover:border-zinc-400 hover:text-zinc-700 rounded-sm text-sm leading-normal">
+                    <a href="{{ route('login') }}" class="inline-block px-2 py-1.5 text-zinc-700 border border-transparent hover:border-zinc-400 hover:text-zinc-700 rounded-sm text-sm leading-normal">
                         Dashboard
                     </a>
                         <flux:dropdown position="top" align="end">
@@ -67,7 +71,7 @@
                         @if (Route::has('register'))
                             <a
                                 href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 text-zinc-700 border border-transparent hover:border-zinc-400 hover:text-zinc-700 rounded-sm text-sm leading-normal">
+                                class="inline-block px-2 py-1.5 text-zinc-700 border border-transparent hover:border-zinc-400 hover:text-zinc-700 rounded-sm text-sm leading-normal">
                                 Register
                             </a>
                         @endif
