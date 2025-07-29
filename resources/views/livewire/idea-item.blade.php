@@ -40,6 +40,9 @@ wire:click="toIdea"
     </header>
     <flux:text class="mt-2 mb-4">
         {{ $ideaText }}
+        @if (!$singleIdea)
+            ...
+        @endif
     </flux:text>
     <footer class="flex">
         {{-- ADD LISTENER/EVENT TO HEART ICON -> TO LIKE POST --}}
