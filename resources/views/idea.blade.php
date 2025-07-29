@@ -11,7 +11,7 @@
             :border='true'
             :singleIdea='true'
             />
-            <livewire:comment-section :comments="$idea->comments"/>
+            <livewire:comment-section :ideaId="$idea['id']" :$comments />
         </main>
     </div>
 

@@ -24,7 +24,9 @@ class IdeaController extends Controller
     {
         if (isset($request['id']))
         {
-            return view('idea', ['idea' => Idea::findOrFail($request['id'])]);
+            $idea = Idea::findOrFail($request['id']);
+            $comments = $idea->comments()->orderBy('created_at', 'desc')->get();
+            return view('idea', ['idea' => $idea, 'comments' => $comments]);
         }
     }
 
