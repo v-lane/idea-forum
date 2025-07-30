@@ -43,8 +43,6 @@ class IdeaForm extends Component
                 $this->id = "";
                 $this->title = "";
                 $this->text = "";
-                // Needs to be a 'saved' somewhere to trigger refresh (In livenote, livenote.blade.php has
-                // <livewire:note-form :key="$this->noteFormId" :$id :$title :$text @saved="refresh" />)
             }
         } else {
 

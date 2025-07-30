@@ -37,9 +37,10 @@ cursor-pointer
 
             </div>
             <div>
-                <flux:modal.trigger name="">
+                <flux:modal.trigger name="delete-alert-{{ $ideaId }}">
                     <flux:icon.trash class="text-zinc-700 cursor-pointer"/>
                 </flux:modal.trigger>
+                <livewire:delete-alert :key="$ideaId" :id="$ideaId" :formId="$ideaId" @deleted="refresh" />
             </div>
         </div>
         @endif
