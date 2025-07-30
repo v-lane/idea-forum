@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Idea;
 use App\Models\User;
+use Flux\Flux;
 use Livewire\Component;
 
 class IdeaItem extends Component
