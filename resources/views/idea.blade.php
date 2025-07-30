@@ -1,7 +1,7 @@
 <x-layouts.app :title="__('Dashboard')">
     <div class="flex items-center justify-center w-full">
         <main class="lg:max-w-6xl w-full">
-            <livewire:idea-item
+            {{-- <livewire:idea-item
             :key="$idea['id']"
             :ideaId="$idea['id']" :ideaTitle="$idea['title']" :ideaText="$idea['text']"
             :numLikes="count($idea->likes)" :numComments="count($idea->comments)"
@@ -10,7 +10,8 @@
 
             :border='true'
             :singleIdea='true'
-            />
+            /> --}}
+            <livewire:idea-section :hasHeader="'true'" :isSingleIdea="true" :$idea/>
             <livewire:comment-section :ideaId="$idea['id']" :$comments />
         </main>
     </div>

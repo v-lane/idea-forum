@@ -17,21 +17,32 @@ class IdeaSection extends Component
 
     public $ideas;
 
+    public $idea;
+    public $isSingleIdea = false;
+
     public function mount()
     {
-        if(!Auth::check() || $this->hasHeader){
-            $this->ideas = Idea::orderBy('created_at', 'desc')->get();
-            $this->ideaCount = count($this->ideas);
-        }
-        else{
-            $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
-            $this->ideaCount = count($this->ideas);
+        if(!$this->isSingleIdea)
+        {
+            if(!Auth::check() || $this->hasHeader){
+                $this->ideas = Idea::orderBy('created_at', 'desc')->get();
+                $this->ideaCount = count($this->ideas);
+            }
+            else{
+                $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+                $this->ideaCount = count($this->ideas);
+            }
         }
     }
 
     public function refresh () {
-        $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
-        $this->ideaCount = count($this->ideas);
+        if($this->isSingleIdea)
+        {
+            $this->idea = Idea::findOrFail($this->idea['id']);
+        } else {
+            $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+            $this->ideaCount = count($this->ideas);
+        }
     }
 
     public function updatedSearch () {

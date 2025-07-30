@@ -34,7 +34,7 @@ cursor-pointer
                     <flux:icon.pencil-square class="text-zinc-700 cursor-pointer"/>
                 </flux:modal.trigger>
                 <livewire:idea-form @saved="refresh" :key="$ideaId" :id="$ideaId" :title="$ideaTitle" :text="$ideaText" :heading="'Edit Your Idea'" :formName="$ideaId" :btnText="'Save'"/>
-                
+
             </div>
             <div>
                 <flux:modal.trigger name="">
@@ -53,7 +53,11 @@ cursor-pointer
     <footer class="flex">
         {{-- ADD LISTENER/EVENT TO HEART ICON -> TO LIKE POST --}}
         <div class="flex pe-4 items-center">
-            <flux:icon.heart class="text-pink-600"/>
+            @if($userLiked)
+                <flux:icon.heart variant="solid" class="text-pink-600"/>
+            @else
+                <flux:icon.heart class="text-pink-600"/>
+            @endif
             <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
         </div>
         <div class="flex items-center">
