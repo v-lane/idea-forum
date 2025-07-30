@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 use function Laravel\Prompts\clear;
@@ -34,14 +35,19 @@ class IdeaSection extends Component
             }
         }
     }
-
+    #[On('refresh')]
     public function refresh () {
         if($this->isSingleIdea)
         {
             $this->idea = Idea::findOrFail($this->idea['id']);
         } else {
-            $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
-            $this->ideaCount = count($this->ideas);
+            if(!Auth::check() || $this->hasHeader){
+                $this->ideas = Idea::orderBy('created_at', 'desc')->get();
+                $this->ideaCount = count($this->ideas);
+            } else {
+                $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+                $this->ideaCount = count($this->ideas);
+            }
         }
     }
 
