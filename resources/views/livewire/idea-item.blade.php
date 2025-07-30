@@ -22,7 +22,7 @@ cursor-pointer
                 @if($createDate == $editDate)
                 {{ $createDate->format('F j, Y @ g:i a') }}
                 @else
-                 Edited at: {{ $editDate->format('F j, Y @ g:i a') }}
+                {{ $editDate->format('F j, Y @ g:i a') }} (edited)
                 @endif
             </flux:text>
         </div>
@@ -56,7 +56,7 @@ cursor-pointer
             @if($userLiked)
                 <flux:icon.heart variant="solid" class="text-pink-600"/>
             @else
-                <flux:icon.heart class="text-pink-600"/>
+                <flux:icon.heart wire:click="likeIdea" class="text-pink-600"/>
             @endif
             <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
         </div>

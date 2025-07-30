@@ -3,7 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Idea;
+use App\Models\Like;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class IdeaItem extends Component
@@ -29,6 +31,22 @@ class IdeaItem extends Component
 
     public function toIdea () {
         $this->redirect("/idea/$this->ideaId");
+    }
+
+    public function likeIdea () {
+        if(Auth::check() && !Like::where('user_id','=',Auth::id())->where('idea_id','=',$this->ideaId)->first()) {
+            $like = new Like();
+            $like->idea_id = $this->ideaId;
+            $like->user_id = Auth::id();
+            $like->save();
+
+            $this->userLiked = true;
+
+            $this->refresh();
+        }
+
+
+
     }
 
     public function refresh()
