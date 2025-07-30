@@ -46,7 +46,22 @@ class IdeaForm extends Component
                 // Needs to be a 'saved' somewhere to trigger refresh (In livenote, livenote.blade.php has
                 // <livewire:note-form :key="$this->noteFormId" :$id :$title :$text @saved="refresh" />)
             }
+        } else {
+
+
+            $idea = !empty($this->id) ? Idea::find($this->id) : new Idea();
+            $idea->title = $this->title;
+            $idea->text = $this->text;
+            $idea->user_id = Auth::id();
+            $idea->save();
+
+            $this->dispatch('saved');
+            Flux::modals()->close();
+            $this->id = "";
+            $this->title = "";
+            $this->text = "";
         }
+
     }
 
     public function render()
