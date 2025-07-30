@@ -8,12 +8,21 @@ use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
 {
-    public function index(){
-        return view('welcome', ['ideas' => Idea::orderBy('created_at', 'desc')->get()]);
-    }
 
     public function indexDash(){
         return view('dashboard', ['ideas' => Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get()]);
+    }
+    public function index(Request $request) {
+        if(isset($request['search'])) {
+            return view('welcome', ['ideas' =>
+                Idea::where('title', 'like', "%{$request['search']}%")
+                ->orWhere('text','like',"%{$request['search']}%")
+                ->get()
+            ]);
+        }
+        return view('welcome', ['ideas' => Idea::orderBy('created_at', 'desc')->get()]);
+
+        // return view('welcome', ['ideas' => Idea::all()]);
     }
 
     public function indexCreate () {
@@ -29,7 +38,9 @@ class IdeaController extends Controller
     {
         if (isset($request['id']))
         {
-            return view('idea', ['idea' => Idea::findOrFail($request['id'])]);
+            $idea = Idea::findOrFail($request['id']);
+            $comments = $idea->comments()->orderBy('created_at', 'desc')->get();
+            return view('idea', ['idea' => $idea, 'comments' => $comments]);
         }
     }
 
