@@ -12,17 +12,17 @@ cursor-pointer
 
 >
     <header class="flex justify-between">
-        <div>
+        <div wire:click.self="toIdea">
             @if($singleIdea)
-            <h1 class="text-4xl pb-1">{{ $ideaTitle }}</h1>
+            <h1 wire:click.self="toIdea" class="text-4xl pb-1">{{ $ideaTitle }}</h1>
             @else
-            <flux:heading size="lg" level="3">{{ $ideaTitle }}</flux:heading>
+            <flux:heading wire:click.self="toIdea" size="lg" level="3">{{ $ideaTitle }}</flux:heading>
             @endif
-            <flux:text class="text-xs" variant="subtle">{{ $username }} -
+            <flux:text wire:click.self="toIdea" class="text-xs" variant="subtle">{{ $username }} -
                 @if($createDate == $editDate)
                 {{ $createDate->format('F j, Y @ g:i a') }}
                 @else
-                 Edited at: {{ $editDate->format('F j, Y @ g:i a') }}
+                {{ $editDate->format('F j, Y @ g:i a') }} (edited)
                 @endif
             </flux:text>
         </div>
@@ -45,7 +45,7 @@ cursor-pointer
         </div>
         @endif
     </header>
-    <flux:text class="mt-2 mb-4">
+    <flux:text wire:click.self="toIdea" class="mt-2 mb-4">
         {{ $ideaText }}
         @if (!$singleIdea)
             ...
@@ -57,13 +57,13 @@ cursor-pointer
             @if($userLiked)
                 <flux:icon.heart variant="solid" class="text-pink-600"/>
             @else
-                <flux:icon.heart class="text-pink-600"/>
+                <flux:icon.heart wire:click="likeIdea" class="text-pink-600 cursor-pointer"/>
             @endif
             <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
         </div>
-        <div class="flex items-center">
-            <flux:icon.chat-bubble-oval-left class="text-pink-600" />
-            <flux:text class="ps-1" color="pink">{{ $numComments }} Comments</flux:textp>
+        <div wire:click.self="toIdea" class="flex items-center">
+            <flux:icon.chat-bubble-oval-left wire:click.self="toIdea" class="text-pink-600" />
+            <flux:text wire:click.self="toIdea" class="ps-1" color="pink">{{ $numComments }} Comments</flux:textp>
         </div>
     </footer>
 </li>
