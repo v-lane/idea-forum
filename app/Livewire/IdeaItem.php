@@ -25,10 +25,12 @@ class IdeaItem extends Component
     public $border;
     public $singleIdea = false;
 
+    public $userLiked;
+
     public function toIdea () {
         $this->redirect("/idea/$this->ideaId");
     }
-    
+
     public function refresh()
     {
         $this->dispatch('refresh');
@@ -37,6 +39,11 @@ class IdeaItem extends Component
     public function mount(){
         if(!$this->singleIdea){
             $this->ideaText = substr($this->ideaText, 0, 125);
+        }
+        if($this->userLiked != null) {
+            $this->userLiked = true;
+        } else {
+            $this->userLiked - false;
         }
     }
 

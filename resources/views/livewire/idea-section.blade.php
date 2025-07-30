@@ -1,4 +1,16 @@
 <div class="mt-4">
+   @if($isSingleIdea)
+        <livewire:idea-item
+            :key="$idea['id'] . $idea['title'] . $idea['text']"
+            :ideaId="$idea['id']" :ideaTitle="$idea['title']" :ideaText="$idea['text']"
+            :numLikes="count($idea->likes)" :numComments="count($idea->comments)"
+            :username="$idea->user->username" :userId="$idea->user_id"
+            :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
+            :border='true'
+            :singleIdea='true'
+            @saved="refresh"
+            />
+   @else
     @auth
         <flux:modal.trigger name="idea-form-create">
             <flux:button icon="plus" variant="ghost" class="m-3 cursor-pointer">Create a New Idea</flux:button>
@@ -7,7 +19,7 @@
     @endauth
 
     @if($hasHeader)
-        <header class="flex justify-between items-center mx-10 mt-8">
+        <header class="flex justify-between items-center mx-12 mt-8">
             <h2 class="text-center text-2xl">All Ideas</h2>
             <livewire:search wire:model.live="search"/>
         </header>
@@ -24,15 +36,16 @@
                 </flux:text>
             @endif
             @foreach($ideas as $idea)
-            <livewire:idea-item :key="$idea['id']"
+            <livewire:idea-item :key="$idea['id'] . $idea['title'] . $idea['text']"
             :ideaId="$idea['id']" :ideaTitle="$idea['title']" :ideaText="$idea['text']"
             :numLikes="count($idea->likes)" :numComments="count($idea->comments)"
             :username="$idea->user->username" :userId="$idea->user_id"
             :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
-            :border='true'
-            @refresh="refresh" />
+            :border='true' :userLiked="$idea->likes->where('user_id', Auth::id())->first()"
+            @saved="refresh" />
             @endforeach
         </x-idea-list>
     </div>
+    @endif
 </div>
 
