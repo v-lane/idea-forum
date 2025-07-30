@@ -56,7 +56,7 @@ cursor-pointer
             @if($userLiked)
                 <flux:icon.heart variant="solid" class="text-pink-600"/>
             @else
-                <flux:icon.heart wire:click="likeIdea" class="text-pink-600"/>
+                <flux:icon.heart wire:click="likeIdea" class="text-pink-600 cursor-pointer"/>
             @endif
             <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
         </div>

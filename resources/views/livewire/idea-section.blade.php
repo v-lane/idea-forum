@@ -1,13 +1,13 @@
 <div class="mt-4">
    @if($isSingleIdea)
         <livewire:idea-item
-            :key="$idea['id'] . $idea['title'] . $idea['text']"
+            :key="$idea['id'] . $idea['title'] . $idea['text'] . count($idea->likes)"
             :ideaId="$idea['id']" :ideaTitle="$idea['title']" :ideaText="$idea['text']"
             :numLikes="count($idea->likes)" :numComments="count($idea->comments)"
             :username="$idea->user->username" :userId="$idea->user_id"
             :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
-            :border='true'
-            :singleIdea='true'
+            :border='true' :singleIdea='true'
+            :userLiked="$idea->likes->where('user_id', Auth::id())->first()"
             @refresh="refresh"
             />
    @else
