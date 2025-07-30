@@ -20,24 +20,33 @@ class IdeaForm extends Component
 
     // Save function
     public function save () {
+
         $this->validate([
             'title' => 'required|max:255|min:2',
             'text' => 'required|min:4'
         ]);
 
-        $idea = !empty($this->id) ? Idea::find($this->id) : new Idea();
-        $idea->title = $this->title;
-        $idea->text = $this->text;
-        $idea->user_id = Auth::id();
-        $idea->save();
+        // if edit form and no changes to title, just close modal
+        if(!empty($this->id)) {
+            $idea = Idea::find($this->id);
+            if ($this->title == $idea->title && $this->text == $idea->text) {
+                Flux::modals()->close();
+            } else {
+                $idea = !empty($this->id) ? Idea::find($this->id) : new Idea();
+                $idea->title = $this->title;
+                $idea->text = $this->text;
+                $idea->user_id = Auth::id();
+                $idea->save();
 
-        $this->dispatch('saved');
-        Flux::modals()->close();
-        $this->id = "";
-        $this->title = "";
-        $this->text = "";
-        // Needs to be a 'saved' somewhere to trigger refresh (In livenote, livenote.blade.php has
-        // <livewire:note-form :key="$this->noteFormId" :$id :$title :$text @saved="refresh" />)
+                $this->dispatch('saved');
+                Flux::modals()->close();
+                $this->id = "";
+                $this->title = "";
+                $this->text = "";
+                // Needs to be a 'saved' somewhere to trigger refresh (In livenote, livenote.blade.php has
+                // <livewire:note-form :key="$this->noteFormId" :$id :$title :$text @saved="refresh" />)
+            }
+        }
     }
 
     public function render()
