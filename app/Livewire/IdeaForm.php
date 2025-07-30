@@ -16,7 +16,7 @@ class IdeaForm extends Component
     public $heading;
     public $formName;
     public $btnText;
-    
+
 
     // Save function
     public function save () {
@@ -24,16 +24,19 @@ class IdeaForm extends Component
             'title' => 'required|max:255|min:2',
             'text' => 'required|min:4'
         ]);
-        
+
         $idea = !empty($this->id) ? Idea::find($this->id) : new Idea();
         $idea->title = $this->title;
         $idea->text = $this->text;
         $idea->user_id = Auth::id();
         $idea->save();
-        
+
         $this->dispatch('saved');
-        Flux::modals()->close(); 
-        // Needs to be a 'saved' somewhere to trigger refresh (In livenote, livenote.blade.php has 
+        Flux::modals()->close();
+        $this->id = "";
+        $this->title = "";
+        $this->text = "";
+        // Needs to be a 'saved' somewhere to trigger refresh (In livenote, livenote.blade.php has
         // <livewire:note-form :key="$this->noteFormId" :$id :$title :$text @saved="refresh" />)
     }
 

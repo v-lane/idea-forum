@@ -24,13 +24,13 @@
                 </flux:text>
             @endif
             @foreach($ideas as $idea)
-            <livewire:idea-item :key="$idea['id']"
+            <livewire:idea-item :key="$idea['id'] . $idea['title'] . $idea['text']"
             :ideaId="$idea['id']" :ideaTitle="$idea['title']" :ideaText="$idea['text']"
             :numLikes="count($idea->likes)" :numComments="count($idea->comments)"
             :username="$idea->user->username" :userId="$idea->user_id"
             :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
-            :border='true'
-            @refresh="refresh" />
+            :border='true' :userLiked="$idea->likes->where('user_id', Auth::id())->first()"
+            @saved="refresh" />
             @endforeach
         </x-idea-list>
     </div>
