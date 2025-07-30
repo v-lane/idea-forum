@@ -11,6 +11,7 @@ class SpotlightWrapper extends Component
 {
     
      public $idea;
+     public $ideaId;
 
     /**
      * Create a new component instance.

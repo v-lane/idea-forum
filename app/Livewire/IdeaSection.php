@@ -19,11 +19,11 @@ class IdeaSection extends Component
     public function mount()
     {
         if(!Auth::check() || $this->hasHeader){
-            $this->ideas = Idea::orderBy('created_at', 'desc')->get();
             $this->ideaCount = count($this->ideas);
         }
         else{
-            $this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+            //$this->ideas = Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+            //$this->ideas = $this->ideas->where('user_id', Auth::id())->get();
             $this->ideaCount = count($this->ideas);
         }
     }

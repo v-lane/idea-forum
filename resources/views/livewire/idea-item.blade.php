@@ -1,3 +1,4 @@
+@if(isset($idea)) 
 <li  class="list-none p-6 border-pink-300 rounded-xl m-6 bg-white
 @if($border)
 border border-solid
@@ -14,19 +15,19 @@ wire:click="toIdea"
     <header class="flex justify-between">
         <div>
             @if($singleIdea)
-            <h1 class="text-4xl pb-1">{{ $ideaTitle }}</h1>
+            <h1 class="text-4xl pb-1">{{ $idea['title'] }}</h1>
             @else
-            <flux:heading size="lg" level="3">{{ $ideaTitle }}</flux:heading>
+            <flux:heading size="lg" level="3">{{ $idea['title'] }}</flux:heading>
             @endif
-            <flux:text class="text-xs" variant="subtle">{{ $username }}/
-                @if($createDate == $editDate)
-                {{ $createDate }}
+            <flux:text class="text-xs" variant="subtle">{{ $idea->user->username }}/
+                @if($idea['created_at'] == $idea['updated_at'])
+                {{ $idea['created_at'] }}
                 @else
-                 Edited at: {{ $editDate }}
+                 Edited at: {{ $idea['updated_at'] }}
                 @endif
             </flux:text>
         </div>
-        @if($userId == Auth::id())
+        @if($idea->user_id == Auth::id())
         {{-- ADD LINK/EVENT TO EDIT/DELETE --}}
         <div class="flex">
             <div>
@@ -39,17 +40,23 @@ wire:click="toIdea"
         @endif
     </header>
     <flux:text class="mt-2 mb-4">
-        {{ $ideaText }}
+        @if($shortText)
+            {{ $idea['text'] }}
+        @else
+            {{ substr($idea['text'], 0, 125) . '...' }}
+        
+        @endif
     </flux:text>
     <footer class="flex">
         {{-- ADD LISTENER/EVENT TO HEART ICON -> TO LIKE POST --}}
         <div class="flex pe-4 items-center">
             <flux:icon.heart class="text-pink-600"/>
-            <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
+            <flux:text class="ps-1" color="pink">{{ count($idea->likes) }} Likes</flux:text>
         </div>
         <div class="flex items-center">
             <flux:icon.chat-bubble-oval-left class="text-pink-600" />
-            <flux:text class="ps-1" color="pink">{{ $numComments }} Comments</flux:textp>
+            <flux:text class="ps-1" color="pink">{{ count($idea->comments) }} Comments</flux:textp>
         </div>
     </footer>
 </li>
+@endif
