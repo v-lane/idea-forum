@@ -2,7 +2,7 @@
     <div class="flex items-center justify-center w-full">
         <main class="lg:max-w-6xl w-full">
             <x-hero :text="'My Ideas'"/>
-            <livewire:idea-section :$ideas :hasIdeaCount="'true'" />
+            <livewire:idea-section :hasIdeaCount="'true'" />
         </main>
     </div>
 

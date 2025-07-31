@@ -11,14 +11,24 @@ use Livewire\Component;
 
 class IdeaItem extends Component
 {
-    public $idea;
     public $ideaId;
+    public $ideaTitle;
+    public $ideaText;
+    public $numLikes;
+    public $numComments;
+
+    public $username;
+    public $userId;
+    public $createDate;
+    public $editDate;
 
     public $border;
     public $singleIdea = false;
     public $shortText = false;
+    public $summary = "";
 
     public $userLiked;
+    public $userCommented;
 
     public function toIdea () {
         $this->redirect("/idea/$this->ideaId");
@@ -35,9 +45,6 @@ class IdeaItem extends Component
 
             $this->refresh();
         }
-
-
-
     }
 
     public function refresh()
@@ -46,15 +53,21 @@ class IdeaItem extends Component
     }
 
     public function mount(){
-        if(!$this->singleIdea && strlen($this->idea['text']) < 125){
+        if(!$this->singleIdea && strlen($this->ideaText) < 125){
             $this->shortText = true;
         }else{
             $this->shortText = false;
+            $this->summary = substr($this->ideaText, 0, 125);
         }
         if($this->userLiked != null) {
             $this->userLiked = true;
         } else {
             $this->userLiked - false;
+        }
+        if($this->userCommented != null){
+            $this->userCommented = true;
+        } else {
+            $this->userCommented = false;
         }
     }
 

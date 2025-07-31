@@ -21,7 +21,7 @@ Route::middleware(['auth'])->group(function () {
     //Route::post('/edit/{id}', [IdeaController::class, 'store'])->name('idea.store');
 });
 
-Route::get('/dashboard', [IdeaController::class, 'indexDash'])
+Route::view('/dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');;
 

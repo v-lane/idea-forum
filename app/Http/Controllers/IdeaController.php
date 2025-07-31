@@ -4,14 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Idea;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
 {
 
-    public function indexDash(){
-        return view('dashboard', ['ideas' => Idea::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get()]);
-    }
     public function index(Request $request) {
         if(isset($request['search'])) {
             return view('welcome', ['ideas' =>
