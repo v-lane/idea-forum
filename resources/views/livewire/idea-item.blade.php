@@ -9,7 +9,6 @@ cursor-pointer
 @if(!$singleIdea)
     wire:click.self="toIdea"
 @endif
-
 >
     <header class="flex justify-between">
         <div @if(!$singleIdea) wire:click.self="toIdea" @endif>
@@ -28,7 +27,14 @@ cursor-pointer
                 @if($createDate == $editDate)
                 {{ $createDate->format('F j, Y @ g:i a') }}
                 @else
-                {{ $editDate->format('F j, Y @ g:i a') }} (edited)
+                <flux:heading wire:click.self="toIdea" size="lg" level="3">{{ $ideaTitle }}</flux:heading>
+                    <flux:text wire:click.self="toIdea" class="text-xs" variant="subtle">{{ $username }} -
+                        @if($createDate == $editDate)
+                        {{ $createDate->format('F j, Y @ g:i a') }}
+                        @else
+                        {{ $editDate->format('F j, Y @ g:i a') }} (edited)
+                        @endif
+                    </flux:text>
                 @endif
             </flux:text>
             @endif
@@ -71,7 +77,9 @@ cursor-pointer
             @if($userLiked)
                 <flux:icon.heart variant="solid" class="text-pink-600"/>
             @else
-                <flux:icon.heart wire:click="likeIdea" class="text-pink-600 cursor-pointer"/>
+            <flux:text wire:click.self="toIdea" class="mt-2 mb-4">
+                {{ $summary }}...
+            </flux:text>
             @endif
             <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
         </div>

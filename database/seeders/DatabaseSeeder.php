@@ -35,5 +35,9 @@ class DatabaseSeeder extends Seeder
         Comment::factory(30)->create();
 
         Like::factory(50)->create();
+        Like::factory()->create([
+            'user_id'=>11,
+            'idea_id'=>16
+        ]);
     }
 }

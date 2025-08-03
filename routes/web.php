@@ -21,10 +21,9 @@ Route::middleware(['auth'])->group(function () {
     //Route::post('/edit/{id}', [IdeaController::class, 'store'])->name('idea.store');
 });
 
-Route::view('dashboard', 'dashboard')
+Route::view('/dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
+    ->name('dashboard');;
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

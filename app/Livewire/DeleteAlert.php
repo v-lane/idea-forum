@@ -18,6 +18,7 @@ class DeleteAlert extends Component
         $this->dispatch('deleted');
         Flux::modals()->close();
 
+
         if($this->singleIdea) {
             $this->redirect('/dashboard');
         }

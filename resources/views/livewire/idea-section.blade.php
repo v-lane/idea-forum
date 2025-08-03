@@ -26,7 +26,11 @@
         </header>
     @endif
     @if($hasIdeaCount && count($ideas) > 0)
+        @if(count($ideas) == 1)
+        <p class="ml-14 mt-10 text-xl">{{ $ideaCount }} Idea</p>
+        @else
         <p class="ml-14 mt-10 text-xl">{{ $ideaCount }} Ideas</p>
+        @endif
     @endif
     <div class="flex justify-center items-center w-full">
         <x-idea-list>

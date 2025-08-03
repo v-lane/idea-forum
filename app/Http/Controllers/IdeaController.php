@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class IdeaController extends Controller
 {
+
     public function index(Request $request) {
         if(isset($request['search'])) {
             return view('welcome', ['ideas' =>
@@ -15,7 +16,9 @@ class IdeaController extends Controller
                 ->get()
             ]);
         }
-        return view('welcome', ['ideas' => Idea::all()]);
+        return view('welcome', ['ideas' => Idea::orderBy('created_at', 'desc')->get()]);
+
+        // return view('welcome', ['ideas' => Idea::all()]);
     }
 
     public function indexCreate () {

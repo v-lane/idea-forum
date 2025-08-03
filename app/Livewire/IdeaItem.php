@@ -11,9 +11,6 @@ use Livewire\Component;
 
 class IdeaItem extends Component
 {
-    // public $idea;
-    // Adding props individually...
-    // May edit/remove once I figure out how to set up properly!
     public $ideaId;
     public $ideaTitle;
     public $ideaText;
@@ -27,6 +24,8 @@ class IdeaItem extends Component
 
     public $border;
     public $singleIdea = false;
+    public $shortText = false;
+    public $summary = "";
 
     public $userLiked;
     public $userCommented;
@@ -54,8 +53,11 @@ class IdeaItem extends Component
     }
 
     public function mount(){
-        if(!$this->singleIdea){
-            $this->ideaText = substr($this->ideaText, 0, 125);
+        if(!$this->singleIdea && strlen($this->ideaText) < 125){
+            $this->shortText = true;
+        }else{
+            $this->shortText = false;
+            $this->summary = substr($this->ideaText, 0, 125);
         }
         if($this->userLiked != null) {
             $this->userLiked = true;
