@@ -8,6 +8,7 @@
             :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
             :border='true' :singleIdea='true'
             :userLiked="$idea->likes->where('user_id', Auth::id())->first()"
+            :userCommented="$idea->comments->where('user_id', Auth::id())->first()"
             @refresh="refresh"
             />
    @else
@@ -47,6 +48,7 @@
             :username="$idea->user->username" :userId="$idea->user_id"
             :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
             :border='true' :userLiked="$idea->likes->where('user_id', Auth::id())->first()"
+            :userCommented="$idea->comments->where('user_id', Auth::id())->first()"
             @refresh="refresh"
             />
             @endforeach
