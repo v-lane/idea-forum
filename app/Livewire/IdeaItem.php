@@ -29,6 +29,7 @@ class IdeaItem extends Component
     public $singleIdea = false;
 
     public $userLiked;
+    public $userCommented;
 
     public function toIdea () {
         $this->redirect("/idea/$this->ideaId");
@@ -45,9 +46,6 @@ class IdeaItem extends Component
 
             $this->refresh();
         }
-
-
-
     }
 
     public function refresh()
@@ -63,6 +61,11 @@ class IdeaItem extends Component
             $this->userLiked = true;
         } else {
             $this->userLiked - false;
+        }
+        if($this->userCommented != null) {
+            $this->userCommented = true;
+        } else {
+            $this->userCommented - false;
         }
     }
 

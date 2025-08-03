@@ -23,7 +23,7 @@ class CommentForm extends Component
         $comment->save();
 
 
-        $this->dispatch('saved');
+        $this->dispatch('refresh');
         $this->commentText = "";
     }
 

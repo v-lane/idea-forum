@@ -10,12 +10,17 @@ class DeleteAlert extends Component
 {
     public $id;
     public $formId;
+    public $singleIdea;
 
     public function destroy () {
         $idea = Idea::find($this->id);
         $idea->delete();
         $this->dispatch('deleted');
         Flux::modals()->close();
+
+        if($this->singleIdea) {
+            $this->redirect('/dashboard');
+        }
     }
 
     public function render()

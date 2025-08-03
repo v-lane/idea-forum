@@ -6,6 +6,7 @@
             :username="$idea->user->username" :userId="$idea->user_id"
             :createDate="$idea['created_at']" :editDate="$idea['updated_at']"
             :userLiked="$idea->likes->where('user_id', Auth::id())->first()"
+            :userCommented="$idea->comments->where('user_id', Auth::id())->first()"
             @refresh="refresh"
 
     />
