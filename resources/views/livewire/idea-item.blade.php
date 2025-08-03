@@ -59,27 +59,21 @@ cursor-pointer
     </header>
     @if(!$singleIdea)
     <flux:text wire:click.self="toIdea" class="mt-2 mb-4">
-        {{ $ideaText }}
-        @if (!$singleIdea)
-            ...
+        @if ($shortText)
+            {{ $ideaText }}
+        @else
+            {{ $summary }} ...
         @endif
     </flux:text>
     @else
         <flux:text class="mt-2 mb-4">
         {{ $ideaText }}
-        @if (!$singleIdea)
-            ...
-        @endif
     </flux:text>
     @endif
     <footer class="flex">
         <div class="flex pe-4 items-center">
             @if($userLiked)
                 <flux:icon.heart variant="solid" class="text-pink-600"/>
-            @else
-            <flux:text wire:click.self="toIdea" class="mt-2 mb-4">
-                {{ $summary }}...
-            </flux:text>
             @endif
             <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
         </div>
