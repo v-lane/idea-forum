@@ -23,20 +23,13 @@ cursor-pointer
             </flux:text>
             @else
             <flux:heading wire:click.self="toIdea" size="lg" level="3">{{ $ideaTitle }}</flux:heading>
-              <flux:text wire:click.self="toIdea" class="text-xs" variant="subtle">{{ $username }} -
-                @if($createDate == $editDate)
-                {{ $createDate->format('F j, Y @ g:i a') }}
-                @else
-                <flux:heading wire:click.self="toIdea" size="lg" level="3">{{ $ideaTitle }}</flux:heading>
-                    <flux:text wire:click.self="toIdea" class="text-xs" variant="subtle">{{ $username }} -
-                        @if($createDate == $editDate)
-                        {{ $createDate->format('F j, Y @ g:i a') }}
-                        @else
-                        {{ $editDate->format('F j, Y @ g:i a') }} (edited)
-                        @endif
-                    </flux:text>
-                @endif
-            </flux:text>
+                <flux:text wire:click.self="toIdea" class="text-xs" variant="subtle">{{ $username }} -
+                    @if($createDate == $editDate)
+                    {{ $createDate->format('F j, Y @ g:i a') }}
+                    @else
+                    {{ $editDate->format('F j, Y @ g:i a') }} (edited)
+                    @endif
+                </flux:text>
             @endif
         </div>
         @if($userId == Auth::id())
