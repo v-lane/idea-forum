@@ -52,7 +52,8 @@ class IdeaSection extends Component
     }
 
     public function updatedSearch () {
-    $this->ideas = Idea::where('title', 'like', "%{$this->search}%")
+    $this->ideas = Idea::orderByDesc('created_at')
+        ->where('title', 'like', "%{$this->search}%")
         ->orWhere('text', 'like', "%{$this->search}%")
         ->get();
     }

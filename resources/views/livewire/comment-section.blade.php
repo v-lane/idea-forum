@@ -1,5 +1,7 @@
 <div>
-    <livewire:comment-form :$ideaId @saved="refresh" />
+    @auth()
+        <livewire:comment-form :$ideaId @saved="refresh" />
+    @endauth
     <flux:separator class="mt-6"/>
     <x-comment-list>
         @if (!count($comments))

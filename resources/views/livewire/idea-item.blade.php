@@ -74,6 +74,8 @@ cursor-pointer
         <div class="flex pe-4 items-center">
             @if($userLiked)
                 <flux:icon.heart variant="solid" class="text-pink-600"/>
+            @else
+                <flux:icon.heart class="text-pink-600"/>
             @endif
             <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
         </div>
