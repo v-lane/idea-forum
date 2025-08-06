@@ -19,7 +19,8 @@ class CommentFactory extends Factory
         return [
             'user_id' => $this->faker->numberBetween(1, 11),
             'idea_id' => $this->faker->numberBetween(1, 15),
-            'text' => $this->faker->paragraph()
+            'text' => $this->faker->paragraph(),
+            'created_at' => $this->faker->dateTimeBetween('-5 days', 'now', 'America/Montreal')
         ];
     }
 }

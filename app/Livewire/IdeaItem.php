@@ -62,12 +62,12 @@ class IdeaItem extends Component
         if($this->userLiked != null) {
             $this->userLiked = true;
         } else {
-            $this->userLiked - false;
+            $this->userLiked = false;
         }
         if($this->userCommented != null) {
             $this->userCommented = true;
         } else {
-            $this->userCommented - false;
+            $this->userCommented = false;
         }
     }
 

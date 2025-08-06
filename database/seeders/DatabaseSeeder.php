@@ -25,19 +25,19 @@ class DatabaseSeeder extends Seeder
 
         Idea::factory(15)->create();
 
-        // Create idea tied to the "TestUser", ID 11
-        Idea::factory()->create([
-            'user_id' => 11,
-            'title' => 'Test User Idea',
-            'text' => 'This idea is tied to the Test User. It should display as the authenticaded user\'s idea if logged in.'
-        ]);
+        // // Create idea tied to the "TestUser", ID 11
+        // Idea::factory()->create([
+        //     'user_id' => 11,
+        //     'title' => 'Test User Idea',
+        //     'text' => 'This idea is tied to the Test User. It should display as the authenticaded user\'s idea if logged in.'
+        // ]);
 
-        Comment::factory(30)->create();
+        Comment::factory(50)->create();
 
-        Like::factory(50)->create();
-        Like::factory()->create([
-            'user_id'=>11,
-            'idea_id'=>16
-        ]);
+        Like::factory(100)->create();
+        // Like::factory()->create([
+        //     'user_id'=>11,
+        //     'idea_id'=>16
+        // ]);
     }
 }

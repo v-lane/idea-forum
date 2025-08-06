@@ -23,20 +23,13 @@ cursor-pointer
             </flux:text>
             @else
             <flux:heading wire:click.self="toIdea" size="lg" level="3">{{ $ideaTitle }}</flux:heading>
-              <flux:text wire:click.self="toIdea" class="text-xs" variant="subtle">{{ $username }} -
-                @if($createDate == $editDate)
-                {{ $createDate->format('F j, Y @ g:i a') }}
-                @else
-                <flux:heading wire:click.self="toIdea" size="lg" level="3">{{ $ideaTitle }}</flux:heading>
-                    <flux:text wire:click.self="toIdea" class="text-xs" variant="subtle">{{ $username }} -
-                        @if($createDate == $editDate)
-                        {{ $createDate->format('F j, Y @ g:i a') }}
-                        @else
-                        {{ $editDate->format('F j, Y @ g:i a') }} (edited)
-                        @endif
-                    </flux:text>
-                @endif
-            </flux:text>
+                <flux:text wire:click.self="toIdea" class="text-xs" variant="subtle">{{ $username }} -
+                    @if($createDate == $editDate)
+                    {{ $createDate->format('F j, Y @ g:i a') }}
+                    @else
+                    {{ $editDate->format('F j, Y @ g:i a') }} (edited)
+                    @endif
+                </flux:text>
             @endif
         </div>
         @if($userId == Auth::id())
@@ -74,6 +67,8 @@ cursor-pointer
         <div class="flex pe-4 items-center">
             @if($userLiked)
                 <flux:icon.heart variant="solid" class="text-pink-600"/>
+            @else
+                <flux:icon.heart wire:click="likeIdea" class="text-pink-600 cursor-pointer"/>
             @endif
             <flux:text class="ps-1" color="pink">{{ $numLikes }} Likes</flux:text>
         </div>

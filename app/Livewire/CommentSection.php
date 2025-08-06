@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Comment;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CommentSection extends Component
@@ -17,6 +18,7 @@ class CommentSection extends Component
         }
     }
 
+    #[On('refresh')]
     public function refresh () {
         $this->comments = Comment::where('idea_id', $this->ideaId)->orderBy('created_at', 'desc')->get();
     }

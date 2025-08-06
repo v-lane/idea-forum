@@ -17,8 +17,6 @@ class IdeaController extends Controller
             ]);
         }
         return view('welcome', ['ideas' => Idea::orderBy('created_at', 'desc')->get()]);
-
-        // return view('welcome', ['ideas' => Idea::all()]);
     }
 
     public function indexCreate () {
